@@ -149,10 +149,12 @@ class FourierSpaceCorrelation(Correlation):
         else:
             self.kgrid = self.grid
 
+        # _setup() assumes sorted kgrid.
+        self.kgrid.sort()
         # Setup grid once. If cell changes we'll call it again
         self._setup()
 
-        # Pick up a random, unique set of nk vectors out ot the avilable ones
+        # Pick up a random, unique set of nk vectors out of the available ones
         # without exceeding maximum number of vectors in shell nkmax
         self.kgrid, self.selection = self._decimate_k()
         # We redefine the grid because of slight differences on the
