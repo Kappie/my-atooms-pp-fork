@@ -149,8 +149,6 @@ class FourierSpaceCorrelation(Correlation):
         else:
             self.kgrid = self.grid
 
-        # _setup() assumes sorted kgrid.
-        self.kgrid.sort()
         # Setup grid once. If cell changes we'll call it again
         self._setup()
 
@@ -179,6 +177,7 @@ class FourierSpaceCorrelation(Correlation):
             else:
                 self.kgrid = linear_grid(min(self.k0), self.kmax, self.ksamples)
         else:
+            self.kgrid.sort()
             # If the first wave-vector is negative we replace it by k0
             if self.kgrid[0] < 0.0:
                 self.kgrid[0] = min(self.k0)
