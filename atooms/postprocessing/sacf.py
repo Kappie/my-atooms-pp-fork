@@ -31,7 +31,7 @@ class StressAutocorrelation(Correlation):
         mass = numpy.array([pi.mass for pi in p])
         self._stress = []
         for i in self.trajectory.samples:
-            s = self.trajectory.read(i).interaction.total_stress
+            s = self.trajectory.read(i).interaction.stress
             slk = numpy.zeros(ndims)
             l = 0
             for j in range(ndims):
